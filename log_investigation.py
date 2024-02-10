@@ -8,6 +8,7 @@ Usage:
 Parameters:
  log_path = Path of the gateway log file
 """
+import csv
 import log_analysis_lib
 
 # Get the log file path from the command line
@@ -62,7 +63,15 @@ def generate_invalid_user_report():
     """
     # TODO: Complete function body per step 10
     # Get data from records that show attempted invalid user login
+    invalid_login_data = la.filter_log_by_regex(log_path, ".*Invalid user.*")[1]
     # Generate the CSV report
+    with open("invalid_user_report.csv", "w", newline="") as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(
+            ["Timestamp", "Source IP", "Destination IP", "Source Port", "Destination Port"]
+        )  # Adjust column headers if needed
+        for record in invalid_login_data:
+            csv_writer.writerow(record)
     return
 
 def generate_source_ip_log(ip_address):

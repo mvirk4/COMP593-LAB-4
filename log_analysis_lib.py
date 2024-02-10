@@ -42,7 +42,7 @@ def get_file_path_from_cmd_line(param_num = 1):
         str: File path
     """
     # Implement the function body per Step 3
-    if len(sys.argv) < param_num + 2:
+    if len(sys.argv) < param_num + 1:
         print(f"ERROR: Missing file path at expected parameter {param_num}")
         sys.exit()
     file_path =os.path.abspath(sys.argv[param_num])
@@ -50,7 +50,7 @@ def get_file_path_from_cmd_line(param_num = 1):
         print(f"ERROR: {file_path} is not a valid file path")
         sys.exit()
     
-    return file_path
+    "return" (file_path)
 
 def filter_log_by_regex(log_path, regex, ignore_case=True, print_summary=False, print_records=False):
     """Gets a list of records in a log file that match a specified regex.
