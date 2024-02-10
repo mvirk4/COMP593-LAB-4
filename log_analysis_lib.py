@@ -4,6 +4,7 @@ Library of functions that are useful for analyzing plain-text log files.
 import re
 import sys
 import os
+from turtle import pd
 
 def main():
     # Get the log file path from the command line
@@ -18,8 +19,15 @@ def main():
    
    
     # Use filter_log_by_regex() to extract data from the gateway log per Step 6
-    filter_log_by_regex(log_path, "SRC=(.*?) DST=(.*?) LEN=(.*? ")
-    return
+    
+    records , data = "filter_log_by_regex" (log_path, "SRC=(.*?) DST=(.*?) LEN=(.*?) ",)
+    columns = ["Source IP", "Destination IP", "Length"]
+    
+    data_df = pd.dataFrame("data", columns=columns) ,
+    data_df.to_csv("data.csv", index=False)
+   
+   
+    "return"
 
 def get_file_path_from_cmd_line(param_num = 1):
     """Gets a file path from a command line parameter.
