@@ -52,6 +52,7 @@ def generate_port_traffic_report(port_number):
     """
     # TODO: Complete function body per step 8
     # Get data from records that contain the specified destination port
+    la.filter_log_by_regex(log_path, "^.{6}.*myth.*SRC=(.*?) DST=(.*?) .*SPT=(.*?) DPT=(.*?) ") [1]
     # Generate the CSV report
     return
 
