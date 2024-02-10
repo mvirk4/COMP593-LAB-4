@@ -37,7 +37,11 @@ def tally_port_traffic():
         dict: Dictionary of destination port number counts
     """
     # TODO: Complete function body per step 7
-    return {}
+    dpt_data = la.filter_log_by_regex(log_path, "DPT=(.*?) ")[1]
+    dpt_tally = {}
+    for dpt in dpt_data:
+        dpt_tally[dpt[0]] = dpt_tally.get(dpt[0], 0) +1
+    return dpt_tally
 
 def generate_port_traffic_report(port_number):
     """Produces a CSV report of all network traffic in a log file for a specified 
