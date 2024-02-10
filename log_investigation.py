@@ -83,7 +83,12 @@ def generate_source_ip_log(ip_address):
     """
     # TODO: Complete function body per step 11
     # Get all records that have the specified source IP address
+    source_ip_data = la.filter_log_by_regex(log_path, f"^.*SRC={ip_address}.*")[1]
     # Save all records to a plain text .txt file
+    with open(f"{ip_address}_log.txt", "w") as logfile:
+        for record in source_ip_data:
+            logfile.write(record)
+            logfile.write("\n")
     return
 
 if __name__ == '__main__':

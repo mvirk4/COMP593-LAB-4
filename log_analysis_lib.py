@@ -20,14 +20,14 @@ def main():
    
     # Use filter_log_by_regex() to extract data from the gateway log per Step 6
     
-    records , data = "filter_log_by_regex" (log_path, "SRC=(.*?) DST=(.*?) LEN=(.*?) ",)
+    records , data = filter_log_by_regex (log_path, "SRC=(.*?) DST=(.*?) LEN=(.*?) ",)
     columns = ["Source IP", "Destination IP", "Length"]
     
-    data_df = pd.dataFrame("data", columns=columns) ,
+    data_df = pd.DataFrame(data, columns=columns) ,
     data_df.to_csv("data.csv", index=False)
    
    
-    "return"
+    return
 
 def get_file_path_from_cmd_line(param_num = 1):
     """Gets a file path from a command line parameter.
@@ -50,7 +50,7 @@ def get_file_path_from_cmd_line(param_num = 1):
         print(f"ERROR: {file_path} is not a valid file path")
         sys.exit()
     
-    "return" (file_path)
+    return file_path
 
 def filter_log_by_regex(log_path, regex, ignore_case=True, print_summary=False, print_records=False):
     """Gets a list of records in a log file that match a specified regex.
