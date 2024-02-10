@@ -9,13 +9,19 @@ def main():
     # Get the log file path from the command line
     log_path = get_file_path_from_cmd_line()
 
-    # TODO: Use filter_log_by_regex() to investigate the gateway log per Step 5
-
-    # TODO: Use filter_log_by_regex() to extract data from the gateway log per Step 6
-
+    #  Use filter_log_by_regex() to investigate the gateway log per Step 5
+    #filter_log_by_regex (log_path, "sshd", print_records = True, print_summary = True)
+    #filter_log_by_regex (log_path, "invalid user", print_records = True, print_summary = True)
+    #filter_log_by_regex (log_path, "invalid user.*220.195.35.40", print_records = True, print_summary = True)
+    #filter_log_by_regex (log_path, "error", print_records = True, print_summary = True)
+    #filter_log_by_regex (log_path, "pam", print_records = True, print_summary = True)
+   
+   
+    # Use filter_log_by_regex() to extract data from the gateway log per Step 6
+    filter_log_by_regex(log_path, "SRC=(.*?) DST=(.*?) LEN=(.*? ")
     return
 
-def get_file_path_from_cmd_line(param_num=1):
+def get_file_path_from_cmd_line(param_num = 1):
     """Gets a file path from a command line parameter.
 
     Exits script execution if no file path is specified as a command 
@@ -70,6 +76,7 @@ def filter_log_by_regex(log_path, regex, ignore_case=True, print_summary=False, 
                 if match.lastindex:
                     # Add tuple of captured data to captured data list
                     captured_data.append(match.groups())
+    
 
     # Print all records, if enabled
     if print_records is True:
